@@ -11,6 +11,9 @@ apertura.
 Tambien queda reservado el espacio para el proyecto futuro **Accrel y
 Reservorios** en `proyectos/accrel_y_reservorios/`.
 
+La documentacion principal del avance esta en
+`docs/informe_bloques_y_sensores.md`.
+
 ## Preparar el proyecto
 
 ```powershell
