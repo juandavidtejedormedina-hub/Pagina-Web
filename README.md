@@ -63,6 +63,15 @@ Los archivos con variables quedan en `Datos/Analiticos/`. Esta etapa no elimina
 filas por tener rezagos o promedios faltantes; deja los nulos para que el
 analisis estadistico decida como tratarlos.
 
+Para preparar reportes base del analisis estadistico:
+
+```powershell
+.\.venv\Scripts\python.exe procesamiento\preparar_analisis_estadistico.py
+```
+
+Esto genera resumen de datasets, estadistica descriptiva numerica y categorica,
+ademas de posibles outliers por IQR en `Datos/Reportes/`.
+
 ## Git y repositorio remoto
 
 Repositorio esperado:

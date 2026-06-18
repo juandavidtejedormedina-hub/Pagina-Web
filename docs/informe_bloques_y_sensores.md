@@ -117,7 +117,9 @@ flowchart TD
     C --> E[procesamiento/generar_variables.py]
     E --> F[Datos/Analiticos/*_variables.csv]
     E --> G[Datos/Reportes/variables_generadas.csv]
-    F --> H[Pagina.py / Streamlit]
+    F --> H[procesamiento/preparar_analisis_estadistico.py]
+    H --> I[Datos/Reportes/reportes estadisticos base]
+    F --> J[Pagina.py / Streamlit]
 ```
 
 ## 7. Limpieza realizada
@@ -327,6 +329,10 @@ Archivos principales:
 | nulos_por_columna.csv | Nulos por columna en datos limpios. |
 | variables_generadas.csv | Diccionario tecnico de variables derivadas. |
 | nulos_variables.csv | Nulos por columna despues de generar variables. |
+| preparacion_analisis_estadistico.csv | Estado de cada dataset analitico para iniciar estadistica. |
+| estadistica_descriptiva_numerica.csv | Resumen descriptivo de variables numericas. |
+| estadistica_descriptiva_categorica.csv | Resumen descriptivo de variables categoricas. |
+| posibles_outliers_iqr.csv | Posibles outliers por IQR en variables continuas con suficiente informacion. |
 
 Nulos relevantes actuales:
 
@@ -374,6 +380,17 @@ fa66b10 Organizar datos y agregar limpieza inicial
 b35d73f Preparar proyecto Streamlit
 ```
 
+Captura textual de preparacion estadistica:
+
+```text
+wigga: 26,885 filas x 80 columnas, listo_para_estadistica
+cortinas: 254 filas x 26 columnas, listo_para_estadistica
+ecowitt: 13,199 filas x 29 columnas, listo_para_estadistica
+apogee: 13,199 filas x 21 columnas, listo_para_estadistica
+analisis_apertura: 4 filas x 27 columnas, listo_para_estadistica
+analisis_apertura_areas: 4 filas x 23 columnas, listo_para_estadistica
+```
+
 ## 13. Comandos de reproduccion
 
 Preparar entorno:
@@ -397,6 +414,12 @@ Generar variables derivadas:
 .\.venv\Scripts\python.exe procesamiento\generar_variables.py
 ```
 
+Preparar reportes base del analisis estadistico:
+
+```powershell
+.\.venv\Scripts\python.exe procesamiento\preparar_analisis_estadistico.py
+```
+
 Ejecutar Streamlit:
 
 ```powershell
@@ -412,11 +435,13 @@ Ejecutar Streamlit:
 5. Reportar nulos y duplicados antes de tomar decisiones agresivas.
 6. Calcular variables temporales por bloque cuando aplica.
 7. No crear variables objetivo de prediccion todavia.
-8. Documentar cada etapa antes de pasar a graficas.
+8. Calcular outliers IQR solo en variables continuas con suficiente informacion.
+9. Documentar cada etapa antes de pasar a graficas.
 
 ## 15. Pendientes sugeridos
 
-Los siguientes pasos naturales son:
+Los datos ya estan listos para iniciar analisis estadistico. Los siguientes
+pasos naturales son:
 
 - Crear modulo `src/datos.py` para cargar CSV analiticos desde Streamlit.
 - Construir primera version de dashboard para WIGGA.
