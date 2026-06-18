@@ -12,5 +12,7 @@ __pycache__/
 Thumbs.db
 Datos/Raw/*.xlsx
 Datos/Procesados/*.csv
+Datos/Reportes/*.csv
 !Datos/Raw/.gitkeep
 !Datos/Procesados/.gitkeep
+!Datos/Reportes/.gitkeep

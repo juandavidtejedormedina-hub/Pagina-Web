@@ -34,6 +34,11 @@ El Excel original se conserva en `Datos/Raw/`. Para generar los CSV limpios:
 
 Los archivos procesados quedan en `Datos/Procesados/`.
 
+Tambien se generan reportes de calidad en `Datos/Reportes/` para revisar nulos,
+duplicados exactos y duplicados por llaves de negocio antes de tomar decisiones
+de limpieza mas fuertes. Los ceros validos, como radiacion `0` o porcentajes
+`0`, se conservan.
+
 ## Git y repositorio remoto
 
 Repositorio esperado:
