@@ -24,6 +24,16 @@ O manualmente:
 streamlit run Pagina.py
 ```
 
+## Preparar datos
+
+El Excel original se conserva en `Datos/Raw/`. Para generar los CSV limpios:
+
+```powershell
+.\.venv\Scripts\python.exe procesamiento\limpiar_datos.py
+```
+
+Los archivos procesados quedan en `Datos/Procesados/`.
+
 ## Git y repositorio remoto
 
 Repositorio esperado:

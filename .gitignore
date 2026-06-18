@@ -10,3 +10,7 @@ __pycache__/
 *.log
 .DS_Store
 Thumbs.db
+Datos/Raw/*.xlsx
+Datos/Procesados/*.csv
+!Datos/Raw/.gitkeep
+!Datos/Procesados/.gitkeep
