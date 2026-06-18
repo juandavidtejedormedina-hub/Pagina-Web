@@ -42,11 +42,23 @@ El Excel original se conserva en `Datos/Raw/`. Para generar los CSV limpios:
 ```
 
 Los archivos procesados quedan en `Datos/Procesados/`.
+La hoja `Analisis Apertura` se separa en dos salidas: una de aperturas en
+metros y otra de areas calculadas en m2.
 
 Tambien se generan reportes de calidad en `Datos/Reportes/` para revisar nulos,
 duplicados exactos y duplicados por llaves de negocio antes de tomar decisiones
 de limpieza mas fuertes. Los ceros validos, como radiacion `0` o porcentajes
 `0`, se conservan.
+
+Para generar variables derivadas con sentido analitico:
+
+```powershell
+.\.venv\Scripts\python.exe procesamiento\generar_variables.py
+```
+
+Los archivos con variables quedan en `Datos/Analiticos/`. Esta etapa no elimina
+filas por tener rezagos o promedios faltantes; deja los nulos para que el
+analisis estadistico decida como tratarlos.
 
 ## Git y repositorio remoto
 

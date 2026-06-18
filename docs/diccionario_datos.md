@@ -47,13 +47,19 @@ Uso analitico:
 
 ## Analisis Apertura
 
-Tabla de referencia para analizar las aperturas de los bloques con porcentajes,
+Tablas de referencia para analizar las aperturas de los bloques con porcentajes,
 medidas fisicas y datos calculados.
+
+Se separa en dos archivos limpios:
+
+- `analisis_apertura_limpio.csv`: medidas base y aperturas en metros.
+- `analisis_apertura_areas_limpio.csv`: areas calculadas en m2, brechas y porcentajes.
 
 Uso analitico:
 
 - Comparar aperturas teoricas, reales y maximas permitidas.
 - Contextualizar los movimientos registrados en cortinas.
+- Evaluar aprovechamiento real de ventilacion frente a la capacidad maxima y teorica.
 
 ## EcoWitt
 

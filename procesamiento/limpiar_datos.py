@@ -201,18 +201,35 @@ def limpiar_tabla_simple(hoja: str, dataset: str) -> pd.DataFrame:
     return quitar_duplicados_exactos(df, dataset)
 
 
-def limpiar_analisis_apertura() -> pd.DataFrame:
-    df = pd.read_excel(RAW_FILE, sheet_name="Analisis Apertura", header=3)
-    df.columns = [normalizar_columna(col) for col in df.columns]
+def _leer_tabla_analisis_apertura(header_row: int, first_data_row: int, last_data_row: int) -> pd.DataFrame:
+    raw = pd.read_excel(RAW_FILE, sheet_name="Analisis Apertura", header=None)
+    df = raw.iloc[first_data_row:last_data_row].copy()
+    df.columns = [normalizar_columna(col) for col in raw.iloc[header_row]]
     df = df.dropna(how="all")
     df = df.dropna(axis=1, how="all")
-    df = df[[col for col in df.columns if not col.startswith("unnamed")]]
+    df = df[[col for col in df.columns if col and not col.startswith("unnamed")]]
+    df = limpiar_textos(df)
+
     if "bloque" in df.columns:
         filas_antes = len(df)
-        df = df[df["bloque"].astype(str).str.contains("Bloque", na=False)]
+        df = df[df["bloque"].astype(str).str.match(r"Bloque\s+\d+", na=False)]
         registrar_remocion("analisis_apertura", "filas_sin_bloque", filas_antes, len(df))
-    df = limpiar_textos(df)
-    return quitar_duplicados_exactos(df.reset_index(drop=True), "analisis_apertura")
+
+    for col in df.columns:
+        if col != "bloque":
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    return df.reset_index(drop=True)
+
+
+def limpiar_analisis_apertura() -> pd.DataFrame:
+    df = _leer_tabla_analisis_apertura(header_row=3, first_data_row=4, last_data_row=8)
+    return quitar_duplicados_exactos(df, "analisis_apertura")
+
+
+def limpiar_analisis_apertura_areas() -> pd.DataFrame:
+    df = _leer_tabla_analisis_apertura(header_row=10, first_data_row=11, last_data_row=15)
+    return quitar_duplicados_exactos(df, "analisis_apertura_areas")
 
 
 def exportar_csv(nombre: str, df: pd.DataFrame) -> None:
@@ -235,6 +252,7 @@ def exportar_reportes(datasets: dict[str, pd.DataFrame]) -> None:
         "ecowitt": ["timestamp_recepcion"],
         "apogee": ["timestamp_recepcion"],
         "analisis_apertura": ["bloque"],
+        "analisis_apertura_areas": ["bloque"],
     }
 
     for nombre, df in datasets.items():
@@ -292,6 +310,7 @@ def main() -> None:
         "ecowitt": limpiar_tabla_simple("EcoWitt", "ecowitt"),
         "apogee": limpiar_tabla_simple("Apogge", "apogee"),
         "analisis_apertura": limpiar_analisis_apertura(),
+        "analisis_apertura_areas": limpiar_analisis_apertura_areas(),
     }
 
     exportar_csv("wigga_limpio.csv", datasets["wigga"])
@@ -299,6 +318,7 @@ def main() -> None:
     exportar_csv("ecowitt_limpio.csv", datasets["ecowitt"])
     exportar_csv("apogee_limpio.csv", datasets["apogee"])
     exportar_csv("analisis_apertura_limpio.csv", datasets["analisis_apertura"])
+    exportar_csv("analisis_apertura_areas_limpio.csv", datasets["analisis_apertura_areas"])
     exportar_reportes(datasets)
     print(f"reportes: {REPORT_DIR}")
 
