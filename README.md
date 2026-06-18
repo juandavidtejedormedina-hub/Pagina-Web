@@ -14,6 +14,9 @@ Reservorios** en `proyectos/accrel_y_reservorios/`.
 La documentacion principal del avance esta en
 `docs/informe_bloques_y_sensores.md`.
 
+La interfaz inicial de Streamlit esta organizada en `src/` y documentada en
+`docs/interfaz_inicio.md`.
+
 ## Preparar el proyecto
 
 ```powershell
