@@ -2,6 +2,15 @@
 
 Portafolio personal creado con Streamlit.
 
+## Proyectos
+
+El proyecto activo por ahora es **Bloques y Sensores**, orientado al analisis
+de datos de bloques, sensores WIGGA, cortinas, EcoWitt, Apogee y analisis de
+apertura.
+
+Tambien queda reservado el espacio para el proyecto futuro **Accrel y
+Reservorios** en `proyectos/accrel_y_reservorios/`.
+
 ## Preparar el proyecto
 
 ```powershell
