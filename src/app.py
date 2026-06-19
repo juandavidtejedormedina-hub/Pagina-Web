@@ -1,6 +1,6 @@
 import streamlit as st
 
-from src.config import PAGE_DASHBOARD, PAGE_HOME, VALID_PAGES
+from src.config import PAGE_HOME, VALID_PAGES
 from src.ui.layout import render_shell
 
 

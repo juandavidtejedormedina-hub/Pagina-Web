@@ -1,9 +1,8 @@
 PAGE_HOME = "inicio"
 PAGE_PROJECTS = "proyectos"
 PAGE_LIBRARY = "biblioteca"
-PAGE_DASHBOARD = "dashboard"
 
-VALID_PAGES = {PAGE_HOME, PAGE_PROJECTS, PAGE_LIBRARY, PAGE_DASHBOARD}
+VALID_PAGES = {PAGE_HOME, PAGE_PROJECTS, PAGE_LIBRARY}
 
 PROJECTS = [
     {
@@ -12,7 +11,7 @@ PROJECTS = [
         "subtitle": "Finca Ponderosa",
         "description": (
             "Monitorea en tiempo real las variables ambientales de los "
-            "invernaderos, estado de cortinas y analisis de correlaciones."
+            "invernaderos y prepara analisis de sensores para la finca."
         ),
         "icon": "greenhouse",
         "card_class": "project-card-primary",

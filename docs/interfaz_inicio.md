@@ -21,7 +21,7 @@ del codigo para que no todo quede en un solo archivo.
   - Acrel
   - Reservorios
 - Tarjetas de biblioteca por proyecto.
-- Botones de ingreso al dashboard.
+- Botones de ingreso al dashboard como entrada visual.
 
 ## Que no se copio
 
@@ -55,15 +55,16 @@ Rutas principales:
 ?seccion=inicio
 ?seccion=proyectos
 ?seccion=biblioteca
-?seccion=dashboard&proyecto=bloques_sensores
-?seccion=dashboard&proyecto=acrel
-?seccion=dashboard&proyecto=reservorios
+?seccion=proyectos&proyecto=bloques_sensores
+?seccion=proyectos&proyecto=acrel
+?seccion=proyectos&proyecto=reservorios
 ```
 
-Por ahora, los botones de dashboard llevan a una pantalla placeholder. Mas
-adelante conectaremos cada proyecto con sus datos, graficas y analisis.
+Por ahora, los botones permanecen dentro de la seccion Proyectos y muestran un
+aviso de entrada preparada. No existe todavia una ruta de dashboard ni se cargo
+ninguna logica antigua de bloques, cortinas, filtros o graficas.
 
 ## Proxima etapa
 
-El siguiente paso sera empezar con el dashboard de **Bloques y Sensores** usando
-los datos de `Datos/Analiticos/`.
+El siguiente paso sera definir la primera vista de analisis que construiremos
+desde los datos de `Datos/Analiticos/`.

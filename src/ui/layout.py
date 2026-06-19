@@ -1,14 +1,14 @@
 import streamlit as st
 
-from src.config import PAGE_DASHBOARD, PAGE_HOME, PAGE_LIBRARY, PAGE_PROJECTS
+from src.config import PAGE_HOME, PAGE_LIBRARY, PAGE_PROJECTS
 from src.ui.assets import asset_data_uri
 from src.ui.icons import icon
-from src.ui.pages import render_dashboard_placeholder, render_home, render_library, render_projects
+from src.ui.pages import render_home, render_library, render_projects
 from src.ui.styles import app_styles
 
 
 def _active_page(page: str) -> str:
-    return PAGE_PROJECTS if page == PAGE_DASHBOARD else page
+    return page
 
 
 def _nav_link(page: str, label: str, icon_name: str, current_page: str) -> str:
@@ -23,11 +23,9 @@ def _nav_link(page: str, label: str, icon_name: str, current_page: str) -> str:
 
 def _page_html(page: str, project: str, library_project: str) -> str:
     if page == PAGE_PROJECTS:
-        return render_projects()
+        return render_projects(project)
     if page == PAGE_LIBRARY:
         return render_library()
-    if page == PAGE_DASHBOARD:
-        return render_dashboard_placeholder(project)
     return render_home()
 
 

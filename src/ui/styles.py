@@ -299,8 +299,33 @@ def app_styles() -> str:
     .projects-shell {{
         min-height: calc(100vh - var(--footer-height) - 96px);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 18px;
+    }}
+    .project-notice {{
+        width: min(976px, 100%);
+        padding: 14px 18px;
+        border-radius: 10px;
+        color: #20276b;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid rgba(255,255,255,0.76);
+        box-shadow: 0 16px 38px rgba(45,48,64,0.10);
+    }}
+    .project-notice-kicker {{
+        margin: 0 0 5px;
+        color: #2d287d;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.10em;
+        text-transform: uppercase;
+    }}
+    .project-notice-copy {{
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        font-weight: 600;
     }}
     .project-grid {{
         width: min(976px, 100%);
@@ -601,53 +626,6 @@ def app_styles() -> str:
         stroke: currentColor;
         stroke-width: 2;
         fill: none;
-    }}
-    .placeholder-shell {{
-        max-width: 880px;
-        min-height: calc(100vh - var(--footer-height) - 96px);
-        display: flex;
-        align-items: center;
-    }}
-    .placeholder-card {{
-        width: min(760px, 100%);
-        padding: 42px 46px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.82);
-        box-shadow: 0 28px 70px rgba(43,48,79,0.13);
-        backdrop-filter: blur(8px);
-    }}
-    .placeholder-kicker {{
-        margin: 0 0 14px;
-        color: #2d287d;
-        font-size: 0.84rem;
-        font-weight: 900;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }}
-    .placeholder-title {{
-        margin: 0;
-        color: var(--elite-ink);
-        font-size: 2.25rem;
-        font-weight: 900;
-    }}
-    .placeholder-copy {{
-        margin: 18px 0 26px;
-        color: #20276b;
-        font-size: 1rem;
-        line-height: 1.65;
-        font-weight: 600;
-    }}
-    .placeholder-action {{
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 46px;
-        padding: 0 22px;
-        border-radius: 999px;
-        background: #343472;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 900;
     }}
     @media (max-width: 1100px) {{
         :root {{ --sidebar-width: 276px; }}

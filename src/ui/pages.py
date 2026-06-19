@@ -1,6 +1,6 @@
 import html
 
-from src.config import PAGE_DASHBOARD, PAGE_PROJECTS, PROJECT_LABELS, PROJECTS
+from src.config import PAGE_PROJECTS, PROJECT_LABELS, PROJECTS
 from src.ui.assets import asset_data_uri
 from src.ui.icons import icon
 
@@ -49,13 +49,13 @@ def render_home() -> str:
     """
 
 
-def render_projects() -> str:
+def render_projects(selected_project: str = "") -> str:
     cards = []
     for project in PROJECTS:
         title_lines = "".join(f"<span>{html.escape(part)}</span>" for part in project["title"].split(" y "))
         if project["key"] == "bloques_sensores":
             title_lines = "<span>Bloques y</span><span>Sensores</span>"
-        href = f"?seccion={PAGE_DASHBOARD}&proyecto={project['key']}"
+        href = f"?seccion={PAGE_PROJECTS}&proyecto={project['key']}"
         cards.append(
             f"""
             <article class="project-card {project['card_class']}">
@@ -75,8 +75,22 @@ def render_projects() -> str:
             </article>
             """
         )
+    notice = ""
+    if selected_project:
+        project_name = PROJECT_LABELS.get(selected_project, "Proyecto")
+        notice = f"""
+        <div class="project-notice">
+            <p class="project-notice-kicker">Entrada preparada</p>
+            <p class="project-notice-copy">
+                Por ahora dejamos solo el inicio. El dashboard de
+                <strong>{html.escape(project_name)}</strong> se construir&aacute; despu&eacute;s con
+                sus datos, gr&aacute;ficas y an&aacute;lisis.
+            </p>
+        </div>
+        """
     return f"""
     <section class="projects-shell">
+        {notice}
         <div class="project-grid">
             {''.join(cards)}
         </div>
@@ -133,19 +147,3 @@ def render_library() -> str:
     </section>
     """
 
-
-def render_dashboard_placeholder(project_key: str) -> str:
-    project_name = PROJECT_LABELS.get(project_key, "Proyecto")
-    return f"""
-    <section class="placeholder-shell">
-        <div class="placeholder-card">
-            <p class="placeholder-kicker">Dashboard en construcci&oacute;n</p>
-            <h1 class="placeholder-title">{html.escape(project_name)}</h1>
-            <p class="placeholder-copy">
-                El inicio y la navegaci&oacute;n ya est&aacute;n listos. Esta secci&oacute;n se conectar&aacute;
-                despu&eacute;s con los datos, gr&aacute;ficas y an&aacute;lisis del proyecto.
-            </p>
-            <a class="placeholder-action" href="?seccion={PAGE_PROJECTS}" target="_self">Volver a proyectos</a>
-        </div>
-    </section>
-    """
