@@ -11,7 +11,7 @@ PROJECTS = [
         "subtitle": "Finca Ponderosa",
         "description": (
             "Monitorea en tiempo real las variables ambientales de los "
-            "invernaderos y prepara analisis de sensores para la finca."
+            "invernaderos, estado de cortinas y analisis de correlaciones."
         ),
         "icon": "greenhouse",
         "card_class": "project-card-primary",

@@ -1,4 +1,5 @@
 import html
+from textwrap import dedent
 
 from src.config import PAGE_PROJECTS, PROJECT_LABELS, PROJECTS
 from src.ui.assets import asset_data_uri
@@ -21,7 +22,7 @@ def _project_icon_html(project: dict) -> str:
 def render_home() -> str:
     brand = asset_data_uri("login_brand_logo_transparent.png")
     brand_html = f'<img src="{brand}" alt="The Elite Flower">' if brand else ""
-    return f"""
+    return dedent(f"""
     <section class="home-shell">
         <header class="home-header">
             <div>
@@ -46,7 +47,7 @@ def render_home() -> str:
             <div class="home-panel"></div>
         </div>
     </section>
-    """
+    """).strip()
 
 
 def render_projects(selected_project: str = "") -> str:
@@ -57,7 +58,7 @@ def render_projects(selected_project: str = "") -> str:
             title_lines = "<span>Bloques y</span><span>Sensores</span>"
         href = f"?seccion={PAGE_PROJECTS}&proyecto={project['key']}"
         cards.append(
-            f"""
+            dedent(f"""
             <article class="project-card {project['card_class']}">
                 <div class="project-heading">
                     <span class="project-icon">{_project_icon_html(project)}</span>
@@ -73,12 +74,12 @@ def render_projects(selected_project: str = "") -> str:
                     {icon("arrow-right")}
                 </a>
             </article>
-            """
+            """).strip()
         )
     notice = ""
     if selected_project:
         project_name = PROJECT_LABELS.get(selected_project, "Proyecto")
-        notice = f"""
+        notice = dedent(f"""
         <div class="project-notice">
             <p class="project-notice-kicker">Entrada preparada</p>
             <p class="project-notice-copy">
@@ -87,15 +88,15 @@ def render_projects(selected_project: str = "") -> str:
                 sus datos, gr&aacute;ficas y an&aacute;lisis.
             </p>
         </div>
-        """
-    return f"""
+        """).strip()
+    return dedent(f"""
     <section class="projects-shell">
         {notice}
         <div class="project-grid">
             {''.join(cards)}
         </div>
     </section>
-    """
+    """).strip()
 
 
 def render_library() -> str:
@@ -110,7 +111,7 @@ def render_library() -> str:
             title_html = html.escape(title)
             subtitle = html.escape(project["subtitle"])
         cards.append(
-            f"""
+            dedent(f"""
             <a class="library-card {project['library_class']}" href="?seccion=biblioteca&biblioteca={project['key']}" target="_self">
                 <div class="library-card-head">
                     <span class="project-icon">{_project_icon_html(project)}</span>
@@ -124,10 +125,10 @@ def render_library() -> str:
                     <span>{project['resources']} recursos</span>
                 </span>
             </a>
-            """
+            """).strip()
         )
 
-    return f"""
+    return dedent(f"""
     <section class="library-shell">
         <header class="library-header">
             <p class="library-kicker">Bienvenido al &aacute;rea de</p>
@@ -145,5 +146,4 @@ def render_library() -> str:
             {''.join(cards)}
         </div>
     </section>
-    """
-
+    """).strip()

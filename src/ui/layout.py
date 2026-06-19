@@ -1,3 +1,5 @@
+from textwrap import dedent
+
 import streamlit as st
 
 from src.config import PAGE_HOME, PAGE_LIBRARY, PAGE_PROJECTS
@@ -41,7 +43,7 @@ def render_shell(current_page: str, current_project: str = "", library_project: 
         ]
     )
 
-    html = f"""
+    html = dedent(f"""
     {app_styles()}
     <div class="elite-shell">
         <aside class="elite-sidebar">
@@ -53,5 +55,9 @@ def render_shell(current_page: str, current_project: str = "", library_project: 
         </main>
         <footer class="elite-footer">The Elite Flower - Cultivamos excelencia, cosechamos futuro</footer>
     </div>
-    """
-    st.markdown(html, unsafe_allow_html=True)
+    """).strip()
+
+    if hasattr(st, "html"):
+        st.html(html)
+    else:
+        st.markdown(html, unsafe_allow_html=True)

@@ -1,3 +1,5 @@
+from textwrap import dedent
+
 from src.ui.assets import asset_data_uri
 
 
@@ -10,7 +12,7 @@ def app_styles() -> str:
     tower_bg = asset_data_uri("card_torre_watermark.png")
     reservoir_bg = asset_data_uri("reservorios_fondo.png")
 
-    return f"""
+    return dedent(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap');
 
@@ -645,4 +647,4 @@ def app_styles() -> str:
         .home-panel {{ height: 220px; }}
     }}
     </style>
-    """
+    """).strip()
