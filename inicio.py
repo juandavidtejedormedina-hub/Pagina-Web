@@ -72,14 +72,31 @@ def render_inicio() -> None:
 
         .stApp {{
             background: #ffffff;
-            overflow: hidden;
+            overflow: hidden !important;
         }}
 
         html,
         body,
+        #root,
+        .stApp,
+        .main,
+        .block-container,
+        div[data-testid="stApp"],
         [data-testid="stAppViewContainer"],
-        [data-testid="stAppViewContainer"] > .main {{
-            overflow: hidden;
+        [data-testid="stAppViewContainer"] > .main,
+        [data-testid="stVerticalBlock"],
+        [data-testid="stVerticalBlockBorderWrapper"],
+        [data-testid="stElementContainer"] {{
+            height: 100vh !important;
+            max-height: 100vh !important;
+            overflow: hidden !important;
+        }}
+
+        html,
+        body {{
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100% !important;
         }}
 
         header[data-testid="stHeader"],
@@ -89,8 +106,8 @@ def render_inicio() -> None:
         }}
 
         [data-testid="stAppViewContainer"] > .main .block-container {{
-            max-width: none;
-            padding: 0;
+            max-width: none !important;
+            padding: 0 !important;
         }}
 
         .elite-shell,
@@ -453,10 +470,7 @@ def render_inicio() -> None:
         """
     ).strip()
 
-    if hasattr(st, "html"):
-        st.html(html)
-    else:
-        st.markdown(html, unsafe_allow_html=True)
+    st.markdown(html, unsafe_allow_html=True)
 
 
 def _icon_user() -> str:
