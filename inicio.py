@@ -73,6 +73,7 @@ def render_inicio() -> None:
         .stApp {{
             background: #ffffff;
             overflow: hidden !important;
+            overscroll-behavior: none !important;
         }}
 
         html,
@@ -83,13 +84,23 @@ def render_inicio() -> None:
         .block-container,
         div[data-testid="stApp"],
         [data-testid="stAppViewContainer"],
-        [data-testid="stAppViewContainer"] > .main,
+        [data-testid="stAppViewContainer"] > .main {{
+            height: 100% !important;
+            max-height: 100% !important;
+            overflow: hidden !important;
+            overscroll-behavior: none !important;
+        }}
+
         [data-testid="stVerticalBlock"],
         [data-testid="stVerticalBlockBorderWrapper"],
-        [data-testid="stElementContainer"] {{
-            height: 100vh !important;
-            max-height: 100vh !important;
-            overflow: hidden !important;
+        [data-testid="stElementContainer"],
+        [data-testid="stMarkdownContainer"] {{
+            height: 0 !important;
+            min-height: 0 !important;
+            max-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: visible !important;
         }}
 
         html,
@@ -97,6 +108,7 @@ def render_inicio() -> None:
             position: fixed !important;
             inset: 0 !important;
             width: 100% !important;
+            touch-action: none !important;
         }}
 
         header[data-testid="stHeader"],
@@ -131,7 +143,7 @@ def render_inicio() -> None:
             left: 0;
             top: 0;
             bottom: 44px;
-            width: 302px;
+            width: 300px;
             padding: 18px 28px 24px;
             color: #ffffff;
             background:
@@ -167,9 +179,9 @@ def render_inicio() -> None:
         }}
 
         .sidebar-logo {{
-            width: 225px;
-            height: 145px;
-            margin: 0 auto 18px;
+            width: 218px;
+            height: 138px;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -178,7 +190,7 @@ def render_inicio() -> None:
         }}
 
         .sidebar-logo img {{
-            width: 225px;
+            width: 218px;
             height: auto;
             display: block;
         }}
@@ -191,7 +203,7 @@ def render_inicio() -> None:
         }}
 
         .menu-link {{
-            min-height: 58px;
+            min-height: 56px;
             display: flex;
             align-items: center;
             gap: 16px;
@@ -234,8 +246,8 @@ def render_inicio() -> None:
 
         .elite-content {{
             position: fixed;
-            inset: 0 0 44px 302px;
-            padding: 32px 56px 8px 88px;
+            inset: 0 0 44px 300px;
+            padding: 28px 56px 8px 88px;
             overflow: hidden;
             isolation: isolate;
         }}
@@ -243,7 +255,7 @@ def render_inicio() -> None:
         .elite-content::before {{
             content: "";
             position: fixed;
-            inset: 0 0 44px 302px;
+            inset: 0 0 44px 300px;
             z-index: -2;
             background-image: url("{background}");
             background-size: cover;
@@ -255,7 +267,7 @@ def render_inicio() -> None:
         .elite-content::after {{
             content: "";
             position: fixed;
-            inset: 0 0 44px 302px;
+            inset: 0 0 44px 300px;
             z-index: -1;
             background:
                 linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.03) 100%),
@@ -263,32 +275,32 @@ def render_inicio() -> None:
         }}
 
         .home-shell {{
-            max-width: 982px;
+            max-width: 980px;
             height: 100%;
             min-height: 0;
             display: grid;
             grid-template-rows: auto minmax(0, 1fr);
-            gap: 10px;
+            gap: 8px;
         }}
 
         .home-header {{
             display: grid;
-            grid-template-columns: minmax(390px, 1fr) minmax(380px, 470px);
+            grid-template-columns: minmax(390px, 1fr) minmax(350px, 440px);
             align-items: start;
             gap: 28px;
         }}
 
         .home-kicker {{
-            margin: 0 0 30px;
+            margin: 0 0 24px;
             color: #14146a;
-            font-size: 0.98rem;
+            font-size: 0.92rem;
             font-weight: 800;
         }}
 
         .home-title {{
             margin: 0;
             color: #161d25;
-            font-size: clamp(2.4rem, 4vw, 3.05rem);
+            font-size: clamp(2.05rem, 3.45vw, 2.65rem);
             line-height: 0.98;
             letter-spacing: 0;
             font-weight: 900;
@@ -296,8 +308,8 @@ def render_inicio() -> None:
 
         .home-title-small {{
             display: block;
-            margin-top: 14px;
-            font-size: 1.08rem;
+            margin-top: 12px;
+            font-size: 1rem;
             line-height: 1.15;
             font-weight: 800;
         }}
@@ -305,36 +317,36 @@ def render_inicio() -> None:
         .home-accent {{
             width: 92px;
             height: 5px;
-            margin-top: 84px;
+            margin-top: 58px;
             border-radius: 999px;
             background: #d78ad7;
         }}
 
         .home-brand {{
-            min-height: 218px;
+            min-height: 188px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-top: 18px;
+            padding-top: 8px;
         }}
 
         .home-brand img {{
-            width: min(390px, 100%);
+            width: min(350px, 100%);
             height: auto;
             display: block;
         }}
 
         .home-intro {{
-            width: min(982px, calc(100vw - 422px));
+            width: min(980px, calc(100vw - 420px));
             align-self: end;
             padding-bottom: 8px;
         }}
 
         .home-copy {{
             max-width: 440px;
-            margin: 0 0 14px;
+            margin: 0 0 12px;
             color: #101469;
-            font-size: 1.02rem;
+            font-size: 0.94rem;
             font-weight: 600;
             line-height: 1.6;
         }}
@@ -343,18 +355,18 @@ def render_inicio() -> None:
             display: inline-flex;
             align-items: center;
             gap: 14px;
-            min-height: 48px;
+            min-height: 44px;
             padding: 0 24px 0 12px;
             border-radius: 999px;
             color: #2c2870;
             background: linear-gradient(90deg, rgba(220,207,255,0.88), rgba(241,231,255,0.82));
-            font-size: 0.94rem;
+            font-size: 0.88rem;
             font-weight: 600;
         }}
 
         .creator-icon {{
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -372,8 +384,8 @@ def render_inicio() -> None:
         }}
 
         .home-panel {{
-            height: clamp(240px, calc(100vh - 470px), 300px);
-            margin-top: 20px;
+            height: clamp(210px, calc(100vh - 420px), 280px);
+            margin-top: 18px;
             border-radius: 16px;
             background: rgba(255,255,255,0.78);
             border: 1px solid rgba(255,255,255,0.78);
