@@ -1,21 +1,15 @@
-# Pagina Web
+# Pagina Web Tejedor
 
-Portafolio personal creado con Streamlit.
+Base limpia para trabajar la pagina web en Streamlit.
 
-## Proyectos
+La aplicacion quedo en blanco con un "Hola mundo" en `Pagina.py`. La interfaz
+anterior fue retirada para empezar de nuevo desde una base sencilla.
 
-El proyecto activo por ahora es **Bloques y Sensores**, orientado al analisis
-de datos de bloques, sensores WIGGA, cortinas, EcoWitt, Apogee y analisis de
-apertura.
+Se conserva la parte de datos, procesamiento y documentacion tecnica:
 
-Tambien queda reservado el espacio para el proyecto futuro **Accrel y
-Reservorios** en `proyectos/accrel_y_reservorios/`.
-
-La documentacion principal del avance esta en
-`docs/informe_bloques_y_sensores.md`.
-
-La interfaz inicial de Streamlit esta organizada en `src/` y documentada en
-`docs/interfaz_inicio.md`.
+- `Datos/`
+- `procesamiento/`
+- `docs/`
 
 ## Preparar el proyecto
 
