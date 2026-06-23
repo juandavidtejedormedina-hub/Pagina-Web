@@ -1,11 +1,11 @@
 import streamlit as st
 
+from inicio import render_inicio
+
 
 st.set_page_config(
     page_title="Pagina Web Tejedor",
-    page_icon=":seedling:",
     layout="wide",
 )
 
-st.title("Hola mundo")
-st.write("Base en blanco para empezar la nueva pagina web.")
+render_inicio()
