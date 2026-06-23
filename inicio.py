@@ -72,6 +72,14 @@ def render_inicio() -> None:
 
         .stApp {{
             background: #ffffff;
+            overflow: hidden;
+        }}
+
+        html,
+        body,
+        [data-testid="stAppViewContainer"],
+        [data-testid="stAppViewContainer"] > .main {{
+            overflow: hidden;
         }}
 
         header[data-testid="stHeader"],
@@ -210,8 +218,8 @@ def render_inicio() -> None:
         .elite-content {{
             position: fixed;
             inset: 0 0 44px 302px;
-            padding: 35px 56px 54px 88px;
-            overflow-y: auto;
+            padding: 32px 56px 8px 88px;
+            overflow: hidden;
             isolation: isolate;
         }}
 
@@ -239,10 +247,11 @@ def render_inicio() -> None:
 
         .home-shell {{
             max-width: 982px;
-            min-height: calc(100vh - 132px);
+            height: 100%;
+            min-height: 0;
             display: grid;
-            grid-template-rows: auto minmax(320px, 1fr);
-            gap: clamp(12px, 1.7vh, 20px);
+            grid-template-rows: auto minmax(0, 1fr);
+            gap: 10px;
         }}
 
         .home-header {{
@@ -285,15 +294,15 @@ def render_inicio() -> None:
         }}
 
         .home-brand {{
-            min-height: 250px;
+            min-height: 218px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-top: 42px;
+            padding-top: 18px;
         }}
 
         .home-brand img {{
-            width: min(405px, 100%);
+            width: min(390px, 100%);
             height: auto;
             display: block;
         }}
@@ -301,6 +310,7 @@ def render_inicio() -> None:
         .home-intro {{
             width: min(982px, calc(100vw - 422px));
             align-self: end;
+            padding-bottom: 8px;
         }}
 
         .home-copy {{
@@ -345,7 +355,7 @@ def render_inicio() -> None:
         }}
 
         .home-panel {{
-            height: clamp(260px, 42vh, 324px);
+            height: clamp(240px, calc(100vh - 470px), 300px);
             margin-top: 20px;
             border-radius: 16px;
             background: rgba(255,255,255,0.78);
