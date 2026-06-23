@@ -60,7 +60,8 @@ def _menu_link(page: str, label: str, icon_html: str, current_page: str) -> str:
 
 def render_inicio() -> None:
     current_page = st.query_params.get("seccion", "inicio")
-    logo = _asset_data_uri("login_logo_principal.png")
+    sidebar_logo = _asset_data_uri("login_logo_principal.png")
+    brand_logo = _asset_data_uri("login_brand_logo_transparent.png")
     background = _asset_data_uri("fondo-flores.png")
     watermark = _asset_data_uri("login_flor_marca_agua.png")
 
@@ -105,7 +106,7 @@ def render_inicio() -> None:
             left: 0;
             top: 0;
             bottom: 44px;
-            width: 304px;
+            width: 302px;
             padding: 18px 28px 24px;
             color: #ffffff;
             background:
@@ -208,8 +209,8 @@ def render_inicio() -> None:
 
         .elite-content {{
             position: fixed;
-            inset: 0 0 44px 304px;
-            padding: clamp(30px, 4vh, 44px) clamp(28px, 4.6vw, 66px) 54px clamp(50px, 6.2vw, 88px);
+            inset: 0 0 44px 302px;
+            padding: 35px 56px 54px 88px;
             overflow-y: auto;
             isolation: isolate;
         }}
@@ -217,7 +218,7 @@ def render_inicio() -> None:
         .elite-content::before {{
             content: "";
             position: fixed;
-            inset: 0 0 44px 304px;
+            inset: 0 0 44px 302px;
             z-index: -2;
             background-image: url("{background}");
             background-size: cover;
@@ -229,7 +230,7 @@ def render_inicio() -> None:
         .elite-content::after {{
             content: "";
             position: fixed;
-            inset: 0 0 44px 304px;
+            inset: 0 0 44px 302px;
             z-index: -1;
             background:
                 linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.03) 100%),
@@ -237,8 +238,8 @@ def render_inicio() -> None:
         }}
 
         .home-shell {{
-            max-width: 1090px;
-            min-height: calc(100vh - 140px);
+            max-width: 982px;
+            min-height: calc(100vh - 132px);
             display: grid;
             grid-template-rows: auto minmax(320px, 1fr);
             gap: clamp(12px, 1.7vh, 20px);
@@ -246,7 +247,7 @@ def render_inicio() -> None:
 
         .home-header {{
             display: grid;
-            grid-template-columns: minmax(360px, 1fr) minmax(340px, 480px);
+            grid-template-columns: minmax(390px, 1fr) minmax(380px, 470px);
             align-items: start;
             gap: 28px;
         }}
@@ -288,17 +289,17 @@ def render_inicio() -> None:
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-top: 36px;
+            padding-top: 42px;
         }}
 
         .home-brand img {{
-            width: min(420px, 100%);
+            width: min(405px, 100%);
             height: auto;
             display: block;
         }}
 
         .home-intro {{
-            width: min(980px, calc(100vw - 424px));
+            width: min(982px, calc(100vw - 422px));
             align-self: end;
         }}
 
@@ -395,7 +396,7 @@ def render_inicio() -> None:
         <div class="elite-shell">
             <aside class="elite-sidebar">
                 <div class="sidebar-logo">
-                    <img src="{logo}" alt="The Elite Flower">
+                    <img src="{sidebar_logo}" alt="The Elite Flower">
                 </div>
 
                 <nav class="menu">
@@ -417,7 +418,7 @@ def render_inicio() -> None:
                             <div class="home-accent"></div>
                         </div>
                         <div class="home-brand">
-                            <img src="{logo}" alt="The Elite Flower">
+                            <img src="{brand_logo}" alt="The Elite Flower">
                         </div>
                     </header>
 
